@@ -1,6 +1,21 @@
 import { Link } from "react-router-dom";
+import { useFavorites } from "../context/FavoritesContext";
 
 function FortCard({ fort }) {
+  const {
+    toggleFavorite,
+    isFavorite,
+  } = useFavorites();
+
+  const favorite = isFavorite(fort.id);
+
+  const handleFavorite = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    toggleFavorite(fort.id);
+  };
+
   return (
     <div className="fort-card">
 
@@ -18,13 +33,29 @@ function FortCard({ fort }) {
 
         <div className="fort-content">
 
-          <p className="fort-type">
-            {fort.type}
-          </p>
+          <div className="fort-card-header">
 
-          <h3>
-            {fort.name}
-          </h3>
+            <div>
+              <p className="fort-type">
+                {fort.type}
+              </p>
+
+              <h3>
+                {fort.name}
+              </h3>
+            </div>
+
+            <button
+              className={`favorite-button ${
+                favorite ? "favorite-active" : ""
+              }`}
+              onClick={handleFavorite}
+              aria-label="Add to favorites"
+            >
+              {favorite ? "❤️" : "♡"}
+            </button>
+
+          </div>
 
           <p>
             📍 {fort.location}

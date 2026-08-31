@@ -403,3 +403,86 @@ footer {
     gap: 30px;
   }
 }
+
+.fort-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.favorite-button {
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.favorite-active {
+  transform: scale(1.1);
+}
+.logo {
+  text-decoration: none;
+  color: inherit;
+}
+
+.favorite-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  min-width: 20px;
+  height: 20px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  background: #8b4513;
+  color: white;
+  font-size: 12px;
+}
+.menu-button {
+  display: none;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+  .menu-button {
+    display: block;
+  }
+
+  .navbar {
+    position: relative;
+  }
+
+  .navbar nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+
+    flex-direction: column;
+    gap: 0;
+
+    background: white;
+    padding: 15px 5%;
+
+    box-shadow:
+      0 5px 15px rgba(0, 0, 0, 0.1);
+
+    z-index: 100;
+  }
+
+  .navbar nav.mobile-open {
+    display: flex;
+  }
+
+  .navbar nav a {
+    padding: 15px 0;
+  }
+}

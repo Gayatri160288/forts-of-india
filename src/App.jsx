@@ -9,6 +9,7 @@ import StateFilter from "./components/StateFilter";
 import FortCard from "./components/FortCard";
 import Footer from "./components/Footer";
 import FortDetails from "./components/FortDetails";
+import Favorites from "./components/Favorites";
 
 import forts from "./data/forts";
 
@@ -86,6 +87,10 @@ function App() {
         <Route
           path="/forts/:id"
           element={<FortDetails />}
+        />
+        <Route
+          path="/favorites"
+          element={<Favorites />}
         />
 
       </Routes>
