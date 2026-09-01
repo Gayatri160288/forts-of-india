@@ -6,15 +6,24 @@ import App from "./App";
 import "./index.css";
 
 import { FavoritesProvider } from "./context/FavoritesContext";
+import { VisitedProvider } from "./context/VisitedContext";
 
 ReactDOM.createRoot(
   document.getElementById("root")
 ).render(
   <React.StrictMode>
     <BrowserRouter>
+
       <FavoritesProvider>
-        <App />
+
+        <VisitedProvider>
+
+          <App />
+
+        </VisitedProvider>
+
       </FavoritesProvider>
+
     </BrowserRouter>
   </React.StrictMode>
 );

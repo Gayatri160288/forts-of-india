@@ -1,32 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import forts from "../data/forts";
 
-function Hero() {
+function Hero({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const navigate = useNavigate();
-
   const handleSearch = () => {
-    const search = searchTerm.trim().toLowerCase();
-
-    if (!search) {
-      return;
-    }
-
-    const foundFort = forts.find((fort) => {
-      return (
-        fort.name.toLowerCase().includes(search) ||
-        fort.state.toLowerCase().includes(search) ||
-        fort.location.toLowerCase().includes(search)
-      );
-    });
-
-    if (foundFort) {
-      navigate(`/forts/${foundFort.id}`);
-    } else {
-      alert("No fort found. Try another search.");
-    }
+    onSearch(searchTerm);
   };
 
   const handleKeyDown = (event) => {

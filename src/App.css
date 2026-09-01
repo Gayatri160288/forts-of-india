@@ -486,3 +486,205 @@ footer {
     padding: 15px 0;
   }
 }
+/* Search Results */
+
+.search-results {
+  padding: 50px 7%;
+  background: #fff;
+}
+
+.search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.search-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #8b4513;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.search-results-header h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.clear-search {
+  border: 1px solid #cfc2b4;
+  background: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.clear-search:hover {
+  background: #eee5db;
+}
+
+.search-result-list {
+  display: grid;
+  gap: 15px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  border: 1px solid #e6ded5;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.2s;
+}
+
+.search-result-item:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.search-result-image {
+  width: 100px;
+  height: 75px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+}
+
+.search-result-content {
+  flex: 1;
+}
+
+.search-result-content h3 {
+  margin: 5px 0;
+}
+
+.search-result-content p {
+  margin: 0;
+}
+
+.search-result-arrow {
+  font-size: 25px;
+  color: #8b4513;
+}
+
+.no-results {
+  padding: 30px 0;
+  text-align: center;
+}
+
+.no-results p {
+  color: #766b62;
+}
+
+@media (max-width: 768px) {
+
+  .search-results {
+    padding: 40px 5%;
+  }
+
+  .search-results-header {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .search-result-item {
+    gap: 12px;
+  }
+
+  .search-result-image {
+    width: 80px;
+    height: 65px;
+  }
+}
+/* Visited Fort */
+
+.details-actions {
+  margin: 30px 0;
+}
+
+.visited-button {
+  border: 1px solid #8b4513;
+  background: white;
+  color: #8b4513;
+  padding: 13px 22px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.visited-button:hover {
+  background: #eee5db;
+}
+
+.visited-active {
+  background: #8b4513;
+  color: white;
+}
+/* Explorer Progress */
+
+.explorer-progress {
+  margin: 0 7%;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.progress-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #8b4513;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.progress-header h2 {
+  margin: 0;
+}
+
+.progress-header strong {
+  font-size: 24px;
+}
+
+.progress-bar {
+  height: 12px;
+  background: #e7ded4;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #8b4513;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  margin-top: 12px;
+  color: #766b62;
+}
+
+@media (max-width: 768px) {
+
+  .explorer-progress {
+    margin: 0 5%;
+    padding: 22px;
+  }
+}

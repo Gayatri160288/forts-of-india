@@ -10,11 +10,16 @@ import FortCard from "./components/FortCard";
 import Footer from "./components/Footer";
 import FortDetails from "./components/FortDetails";
 import Favorites from "./components/Favorites";
+import SearchResults from "./components/SearchResults";
+import ExplorerProgress from "./components/ExplorerProgress";
 
 import forts from "./data/forts";
 
 function Home() {
+
   const [selectedState, setSelectedState] = useState("All");
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   const states = useMemo(() => {
     return [
@@ -32,12 +37,49 @@ function Home() {
             fort.state === selectedState
         );
 
+  const searchResults = forts.filter((fort) => {
+
+    const search = searchTerm
+      .trim()
+      .toLowerCase();
+
+    if (!search) {
+      return false;
+    }
+
+    return (
+      fort.name.toLowerCase().includes(search) ||
+      fort.state.toLowerCase().includes(search) ||
+      fort.location.toLowerCase().includes(search) ||
+      fort.type.toLowerCase().includes(search)
+    );
+  });
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+  };
+
   return (
     <>
-
       <Navbar />
 
-      <Hero />
+      <Hero
+        onSearch={handleSearch}
+      />
+
+      <ExplorerProgress
+        totalForts={forts.length}
+      />
+
+      <SearchResults
+        results={searchResults}
+        searchTerm={searchTerm}
+        onClear={clearSearch}
+      />
 
       <StateFilter
         states={states}
@@ -51,7 +93,9 @@ function Home() {
       >
 
         <h2>
-          Popular Forts
+          {selectedState === "All"
+            ? "Popular Forts"
+            : `${selectedState} Forts`}
         </h2>
 
         <div className="fort-grid">
@@ -68,12 +112,12 @@ function Home() {
       </section>
 
       <Footer />
-
     </>
   );
 }
 
 function App() {
+
   return (
     <div className="app">
 
@@ -88,6 +132,7 @@ function App() {
           path="/forts/:id"
           element={<FortDetails />}
         />
+
         <Route
           path="/favorites"
           element={<Favorites />}

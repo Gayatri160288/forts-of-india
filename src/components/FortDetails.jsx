@@ -1,12 +1,18 @@
 import { useParams, Link } from "react-router-dom";
 import forts from "../data/forts";
+import { useVisited } from "../context/VisitedContext";
 
 function FortDetails() {
   const { id } = useParams();
+  const {
+  toggleVisited,
+  isVisited,
+} = useVisited();
 
   const fort = forts.find(
     (fort) => fort.id === Number(id)
   );
+  const visited = isVisited(Number(id));
 
   if (!fort) {
     return (
@@ -82,19 +88,36 @@ function FortDetails() {
 
         </div>
 
-        <div className="coming-soon">
+        <div className="details-actions">
 
-          <h2>🤖 AI Fort Guide</h2>
+  <button
+    className={`visited-button ${
+      visited ? "visited-active" : ""
+    }`}
+    onClick={() =>
+      toggleVisited(Number(id))
+    }
+  >
+    {visited
+      ? "✓ I've Visited This Fort"
+      : "🏆 Mark as Visited"}
+  </button>
 
-          <p>
-            Ask our AI guide about this fort.
-          </p>
+</div>
 
-          <button>
-            Coming Soon
-          </button>
+<div className="coming-soon">
 
-        </div>
+  <h2>🤖 AI Fort Guide</h2>
+
+  <p>
+    Ask our AI guide about this fort.
+  </p>
+
+  <button>
+    Coming Soon
+  </button>
+
+</div>
 
       </div>
 
